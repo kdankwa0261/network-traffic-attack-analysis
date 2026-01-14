@@ -3,6 +3,34 @@
 ## Project Overview
 This project analyzes captured network traffic to identify reconnaissance, lateral movement, brute-force attacks, and data exfiltration within an internal network.
 
+# Architecture Diagram - Network Traffic Attack Analysis
+
+        ┌──────────────────────────────────────┐
+        │        Compromised Host               │
+        │        192.168.2.111                  │
+        │  Attacker Pivot / Internal Recon      │
+        └───────────────┬──────────────────────┘
+                        │
+        ┌───────────────▼──────────────────────┐
+        │        Internal Network Segment       │
+        │                                      │
+        │  ┌──────────────┐   ┌─────────────┐ │
+        │  │  SSH Target  │   │ FTP Server  │ │
+        │  │192.168.2.77  │   │192.168.2.108│ │
+        │  └──────────────┘   └─────────────┘ │
+        │                                      │
+        └───────────────┬──────────────────────┘
+                        │
+                 PCAP Capture Files
+                        │
+        ┌───────────────▼──────────────────────┐
+        │          Analyst Workstation          │
+        │              Wireshark                │
+        │   Timeline Reconstruction and IOC     │
+        └──────────────────────────────────────┘
+
+
+
 ## Environment and Data
 - Multiple PCAP files
 - Internal enterprise network traffic
